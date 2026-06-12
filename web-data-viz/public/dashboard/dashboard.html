@@ -96,7 +96,7 @@
             document.getElementById("graficos").innerHTML += `
                 <div id="grafico${item.id}" class="display-none">
                     <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
+                        <span id="tituloAquario${item.id}">${item.nome}</span>
                     </h3>
                     <div class="graph">
                         <canvas id="myChartCanvas${item.id}"></canvas>
@@ -110,15 +110,15 @@
             obterDadosGrafico(item.id)
         });
 
-        if (aquarios.length > 0) {
-            exibirAquario(aquarios[0].id)
+        if (livros.length > 0) {
+            exibirAquario(livros[0].id)
         }
     }
 
     function alterarTitulo(idLivro) {
         var tituloAquario = document.getElementById(`tituloAquario${idLivro}`)
-        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idLivro).descricao;
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
+        var descricao = JSON.parse(sessionStorage.LIVROS).find(item => item.id == idLivro).nome;
+        tituloAquario.innerHTML = "Histórico de leitura do livro:  <span style='color: #003366'>" + descricao + "</span>"
     }
 
     function exibirAquario(idLivro) {
