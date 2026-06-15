@@ -11,4 +11,8 @@ router.get("/tempo-real/:idLivro", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
+router.get("/cinco-generos/:idUsuario", function (req, res) {
+    medidaController.buscarCincoGeneros(req, res);
+})
+
 module.exports = router;

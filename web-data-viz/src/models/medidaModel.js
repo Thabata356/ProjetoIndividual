@@ -28,7 +28,23 @@ function buscarMedidasEmTempoReal(idLivro) {
     return database.executar(instrucaoSql);
 }
 
+function buscarCincoGeneros() {
+
+    var instrucaoSql = `SELECT genero, COUNT(*) AS total
+                        FROM livro 
+                        GROUP BY genero
+                        wHERE fk_usuario =${idUsuario}
+                        ORDER BY total DESC 
+                        LIMIT 5;
+                        `;
+
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarCincoGeneros
 }

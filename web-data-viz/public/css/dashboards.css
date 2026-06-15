@@ -352,7 +352,7 @@ canvas {
 
 .kpi {
   width: 100%;
-  padding: 0.9375rem;
+  height: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;

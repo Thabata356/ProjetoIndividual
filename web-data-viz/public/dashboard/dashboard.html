@@ -150,6 +150,7 @@
 
     function exibirAquario(idLivro) {
         let todosOsGraficos = JSON.parse(sessionStorage.LIVROS);
+        let idUsuario = JSON.parse(sessionStorage.USUARIO)
 
         for (i = 0; i < todosOsGraficos.length; i++) {
             // exibindo - ou não - o gráfico
@@ -305,7 +306,7 @@
             config2
         );
 
-        setTimeout(() => atualizarGrafico(idLivro, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico(idLivro, dados, myChart, idUsuario, dados2, myChart2), 2000);
     }
 
 
@@ -314,9 +315,7 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idLivro, dados, myChart) {
-
-
+    function atualizarGrafico(idLivro, dados, myChart, idUsuario, dados2, myChart2) {
 
         fetch(`/medidas/tempo-real/${idLivro}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -349,19 +348,51 @@
                         dados.datasets[0].data.shift();  // apagar o primeiro de umidade
                         dados.datasets[0].data.push(novoRegistro[0].paginas_lidas); // incluir uma nova medida de umidade
 
-                        dados2.datasets[1].data.shift();  // apagar o primeiro de umidade
-                        dados2.datasets[1].data.push(novoRegistro[0].livros_lidos); // incluir uma nova medida de umidade
-
                         myChart.update();
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idLivro, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idLivro, dados, myChart, idUsuario, dados2, myChart2), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idLivro, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idLivro, dados, myChart, idUsuario, dados2, myChart2), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+
+            fetch(`/medidas/cinco-generos/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+
+                    let avisoCaptura = document.getElementById(`avisoCaptura${idLivro}`)
+                    avisoCaptura.innerHTML = ""
+
+
+                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                    } else {
+                        dados.labels.shift(); 
+                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+
+                        dados2.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados2.datasets[0].data.push(novoRegistro[0].livros_lidos); // incluir uma nova medida de umidade
+
+                        myChart2.update();
+                    }
+
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idLivro, dados, myChart, idUsuario, dados2, myChart2), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idLivro, dados, myChart, idUsuario, dados2, myChart2), 2000);
             }
         })
             .catch(function (error) {
