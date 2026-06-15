@@ -1,12 +1,15 @@
-/* pagina mural */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* ==========================================TODAS AS PÁGINAS================================================== */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f5f3ef;
 }
+
+/* pagina mural */
 
 .label-captura {
   display: flex;
@@ -16,7 +19,7 @@ body {
 .dash-right .avisos {
   width: 100%;
   color: rgb(216, 216, 216);
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .dash-right .avisos .container {
@@ -64,7 +67,7 @@ body {
 
 .publicacao-btn-editar {
   cursor: pointer;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Montserrat", sans-serif;
   border: 0;
   border-radius: 5px;
   font-weight: 600;
@@ -120,7 +123,7 @@ body {
   position: relative;
   top: 0;
   left: 20%;
-  background-color: #161618;
+  background-color: #f5f3ef;
   height: 100vh;
   overflow: auto;
 }
@@ -325,7 +328,51 @@ canvas {
   height: 100% !important;
 }
 
-/* PAGINA DOS GRÁFICOS 2023 */
+/*=========================================== PAGINA DOS GRÁFICOS 2023 ==================================================*/
+
+.box-agrupamento {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.grupo-kpis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 17.5rem;
+  height: 8.75rem;
+  border-radius: 1.25rem;
+  margin-right: 20px;
+  margin-top: 20px;
+  background: #c8d9e6;
+  border: 1px solid rgba(0, 51, 102, 0.15);
+}
+
+.kpi {
+  width: 100%;
+  padding: 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.kpi h4 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #003366;
+}
+
+.kpi h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #003366;
+  margin: 0;
+}
 
 .janela {
   display: flex;
@@ -348,15 +395,20 @@ canvas {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid #32b9cd;
-  background-color: #212124;
+  border-right: 1px solid #003366;
+  background-color: #003366;
+}
+
+.header-left img{
+  width: 170px;
+  height: auto;
 }
 
 .dash-right {
   display: flex;
   width: 70%;
   height: fit-content;
-  background-color: #161618;
+  background-color: #f5f3ef;
   position: relative;
   top: 0;
   left: 25%;
@@ -375,7 +427,7 @@ canvas {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: #f5f3ef;
   font-weight: 300;
   font-size: 1.2rem;
 }
@@ -384,28 +436,31 @@ canvas {
   font-weight: 800;
 }
 
-.btn-nav {
-  width: 40%;
-  color: white;
-  background-color: #e6005a;
-  border-radius: 5px;
-  text-align: center;
-  padding: 2% 5%;
+.btn-nav,
+.btn-nav-white {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c8d9e6;
+  border: none;
+  width: 140px;
+  height: 35px;
+  border-radius: 9px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
 }
 
-.btn-nav-white {
-  width: 40%;
-  background-color: white;
-  border: 3px solid #e6005a;
-  border-radius: 5px;
-  text-align: center;
-  padding: 2% 5%;
+.btn-nav h3{
+  font-size: 14px;
+  color: #003366;
 }
 
 .btn-nav-white h3 {
-  color: #e6005a;
+  color: #003366;
   padding: 0;
   margin: 0;
+  font-size: 14px;
 }
 
 .btn-nav h3,
@@ -414,15 +469,30 @@ canvas {
   padding: 0;
 }
 
+.btn-nav:hover,
+.btn-nav-white:hover{
+  background-color: #f5f3ef;
+}
+
 .btn-logout {
-  margin: 0;
-  padding: 0;
-  width: 20%;
-  background-color: #32b9cd;
-  color: white;
-  border-radius: 10px;
-  text-align: center;
-  padding: 10px 15px;
-  margin-bottom: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f3ef;
+  border: none;
+  width: 140px;
+  height: 35px;
+  border-radius: 9px;
+  font-weight: 600;
   cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn-logout h3{
+  font-size: 14px;
+  color: #003366;
+}
+
+.btn-logout:hover{
+  background-color: #c8d9e6;
 }
