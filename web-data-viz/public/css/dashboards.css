@@ -399,7 +399,7 @@ canvas {
   background-color: #003366;
 }
 
-.header-left img{
+.header-left img {
   width: 170px;
   height: auto;
 }
@@ -451,7 +451,7 @@ canvas {
   font-family: "Montserrat", sans-serif;
 }
 
-.btn-nav h3{
+.btn-nav h3 {
   font-size: 14px;
   color: #003366;
 }
@@ -470,7 +470,7 @@ canvas {
 }
 
 .btn-nav:hover,
-.btn-nav-white:hover{
+.btn-nav-white:hover {
   background-color: #f5f3ef;
 }
 
@@ -488,17 +488,17 @@ canvas {
   font-family: "Montserrat", sans-serif;
 }
 
-.btn-logout h3{
+.btn-logout h3 {
   font-size: 14px;
   color: #003366;
 }
 
-.btn-logout:hover{
+.btn-logout:hover {
   background-color: #c8d9e6;
 }
 
-/*=========================================== PAGINA DOS GRÁFICOS 2023 ==================================================*/
-.conteudo{
+/*=========================================== EDITAR ==================================================*/
+.conteudo {
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -509,12 +509,12 @@ canvas {
   margin-top: 20px;
 }
 
-.conteudo h2{
+.conteudo h2 {
   color: #003366;
   margin-bottom: 35px;
 }
 
-.card{
+.card {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -525,7 +525,8 @@ canvas {
   border-radius: 12px;
 }
 
-.card p{
+.card p,
+.card-cadastrar p {
   display: flex;
   align-self: self-start;
   margin-left: 30px;
@@ -535,26 +536,39 @@ canvas {
 }
 
 input {
-    width: 85%;
-    padding: 0.75rem;
-    border-radius: 0.625rem;
-    border: 1px solid #c8d9e6;
-    font-family: "Montserrat", sans-serif;
-    margin-bottom: 12px;
-    color: #000000;
+  width: 85%;
+  padding: 0.75rem;
+  border-radius: 0.625rem;
+  border: 1px solid #c8d9e6;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 12px;
+  color: #000000;
 }
 
-.btn-atualizar{
+.btn-atualizar,
+.btn-cadastrar {
   padding: 0.75rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border: none;
-    background-color: #c8d9e6;
-    color: #003366;
-    width: 90%;
-    align-self: center;
-    font-family: "Montserrat", sans-serif;
-    margin-top: 20px;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  background-color: #c8d9e6;
+  color: #003366;
+  width: 90%;
+  align-self: center;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 20px;
+}
+
+
+.card-cadastrar {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 500px;
+  height: 600px;
+  align-items: center;
+  border: solid 2px #c8d9e6;
+  border-radius: 12px;
 }
