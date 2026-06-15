@@ -496,3 +496,65 @@ canvas {
 .btn-logout:hover{
   background-color: #c8d9e6;
 }
+
+/*=========================================== PAGINA DOS GRÁFICOS 2023 ==================================================*/
+.conteudo{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  position: relative;
+  top: 0;
+  left: 20%;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.conteudo h2{
+  color: #003366;
+  margin-bottom: 35px;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 500px;
+  height: 500px;
+  align-items: center;
+  border: solid 2px #c8d9e6;
+  border-radius: 12px;
+}
+
+.card p{
+  display: flex;
+  align-self: self-start;
+  margin-left: 30px;
+  color: #444444;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+input {
+    width: 85%;
+    padding: 0.75rem;
+    border-radius: 0.625rem;
+    border: 1px solid #c8d9e6;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 12px;
+    color: #000000;
+}
+
+.btn-atualizar{
+  padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    background-color: #c8d9e6;
+    color: #003366;
+    width: 90%;
+    align-self: center;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 20px;
+}
