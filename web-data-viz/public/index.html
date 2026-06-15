@@ -2,81 +2,130 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Página Inicial</title>
+  <title>FMV | Página Inicial</title>
 
-    <script src="./js/sessao.js"></script>
+  <script src="./js/sessao.js"></script>
 
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="./css/estilo.css">
+  <link rel="icon" href="./assets/icon/livro.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">AquaTech</h1>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-      </div>
+
+  <div class="header">
+    <div class="container">
+      <img src="./assets/imgs/logo-sem-fundo.png">
+      <ul class="navbar">
+        <li class="agora">
+          <a href="index.html">Inicial</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+        <li>
+          <a href="cadastro.html">Cadastro</a>
+        </li>
+      </ul>
     </div>
-  
-    <div class="banner">
-      <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-      </div>
+  </div>
+
+  <div class="banner">
+    <h1 class="titulo-principal">Cada página, uma nova folha da sua história</h1>
+    <p>Organize suas leituras, registre reflexões e acompanhe sua evolução como leitor. Uma estante digital feita com
+      carinho para quem ama ler.</p>
+    <br>
+    <a href="cadastro.html"><button class="comecar">Comecar a minha estante</button></a>
+
+  </div>
+
+
+  <div class="sobre">
+    <div class="sobre-escrito">
+      <span>SOBRE ESSE ESPAÇO</span>
+      <h1>Onde os livros ganham vida além das páginas</h1>
+      <p>Este é o meu espaço de reflexão literária — um lugar onde cada livro lido se transforma em uma análise honesta,
+        pessoal e apaixonada. Não sou crítica profissional, sou uma leitora dedicada que acredita que bons livros
+        merecem
+        boa conversa.
+        <br>
+        <br>
+
+        Aqui você encontra resenhas aprofundadas, meu progresso de leitura em tempo real, e um espaço para trocarmos
+        impressões sobre as obras que nos formam como pessoas.
+      </p>
+      <a href="cadastro.html"><button class="btn-texto" id="verResenhas()">Ver todas as resenhas → </button></a>
     </div>
-  
-    <div class="social">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-            <img src="assets/imgs/planet-earth_color.png">
-            <h4>Missão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/lightbulb_color.png">
-            <h4>Visão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/growth_color.png">
-            <h4>Valores</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
+
+    <div class="sobre-quadrado">
+      <div class="lado-a-lado">
+        <div class="quadrado1" id="kpi_livros_lidos">
+          <h2>0</h2>
+          <p>livros lidos</p>
+        </div>
+        <div class="quadrado2" id="kpi_resenhas">
+          <h2>0</h2>
+          <p>resenhas publicadas</p>
         </div>
       </div>
-    </div>
-  
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-        <span class="version">v1.0.0</span>
+      <div class="quadrado3" id="kpi_comentarios">
+        <h2>0</h2>
+        <p>comentários da comunidade</p>
       </div>
     </div>
-  </body>
+  </div>
+
+
+  <div class="experiencia">
+    <span>O QUE VOCÊ ENCONTRA AQUI</span>
+    <h1>Uma experiência literária completa</h1>
+    <div class="experiencia-quadrados">
+      <div class="quadrado4">
+        <div class="mini-quadrado">
+          <img src="./assets/imgs/caneta-de-pena.png" class="icon">
+          <img src="./assets/imgs/caneta-de-pena-branca.png" class="icon-branco">
+        </div>
+        <h3>Resenhas Autorais</h3>
+        <p>Análises honestas e aprofundadas, escritas com amor por cada obra. Sem spoilers não avisados.</p>
+      </div>
+
+      <div class="quadrado5">
+        <div class="mini-quadrado">
+          <img src="./assets/imgs/grafico-de-barras.png" class="icon">
+          <img src="./assets/imgs/grafico-de-barras-branca.png" class="icon-branco">
+        </div>
+        <h3>Progresso em Tempo Real</h3>
+        <p>Acompanhe o que estou lendo agora, minha meta anual e os gráficos de leitura mês a mês.</p>
+      </div>
+
+      <div class="quadrado6">
+        <div class="mini-quadrado">
+          <img src="./assets/imgs/bate-papo.png" class="icon">
+          <img src="./assets/imgs/bate-papo-braca.png" class="icon-branco">
+        </div>
+        <h3>Comunidade Literária</h3>
+        <p>Deixe sua opinião, troque ideias e participe da conversa sobre os livros que mais amamos.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <img src="./assets/imgs/logo-branca.png">
+      <ul class="navbar">
+        <li class="agora"><a href="index.html">Inicial</a></li>
+        <li>|</li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+      </ul>
+    </div>
+  </div>
+
+</body>
 
 </html>
