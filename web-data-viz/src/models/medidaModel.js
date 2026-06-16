@@ -28,12 +28,12 @@ function buscarMedidasEmTempoReal(idLivro) {
     return database.executar(instrucaoSql);
 }
 
-function buscarCincoGeneros() {
+function buscarCincoGeneros(idUsuario) {
 
     var instrucaoSql = `SELECT genero, COUNT(*) AS total
                         FROM livro 
                         GROUP BY genero
-                        wHERE fk_usuario =${idUsuario}
+                        wHERE fk_usuario = ${idUsuario}
                         ORDER BY total DESC 
                         LIMIT 5;
                         `;

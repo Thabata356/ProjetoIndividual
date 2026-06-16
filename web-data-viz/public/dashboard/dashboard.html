@@ -156,7 +156,7 @@
 
     function exibirAquario(idLivro) {
         let todosOsGraficos = JSON.parse(sessionStorage.LIVROS);
-        let idUsuario = JSON.parse(sessionStorage.USUARIO)
+        let idUsuario = JSON.parse(sessionStorage.ID_USUARIO);
 
         for (i = 0; i < todosOsGraficos.length; i++) {
             // exibindo - ou não - o gráfico
@@ -219,6 +219,20 @@
                 console.error('Nenhum dado encontrado ou erro na API');
             }
         })
+
+        fetch(`/medidas/ultimas/${idLivro}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idLivro);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
@@ -227,7 +241,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idLivro) {
+    function plotarGrafico(resposta, idLivro, idUsuario) {
 
         console.log('iniciando plotagem do gráfico...');
 
