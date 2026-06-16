@@ -28,7 +28,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body>
+<body onload="buscarLivrosporUsuario()">
 
     <div class="janela">
         <div class="header-left">
@@ -92,10 +92,12 @@
             </div>
 
         </div>
-
-        <div class="btns-dash" id="btnAquario">
-            <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-        </div>
+        <select class="btns-dash" id="btnAquario">
+            <option value="">Selecione um livro</option>
+        </select>
+        <!-- <div class="btns-dash" id="btnAquario">
+            
+        </div> -->
         <div id="graficos"></div>
     </div>
     </div>
@@ -106,17 +108,16 @@
 </html>
 
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-    let proximaAtualizacao;
-
-    window.onload = buscarLivrosporUsuario();
-
+    let b_usuario = sessionStorage.NOME_USUARIO;
+    let idUsuario = sessionStorage.ID_USUARIO;
+    
     function buscarLivrosporUsuario() {
         var livros = JSON.parse(sessionStorage.LIVROS);
         livros.forEach(item => {
+            console.log(livros, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            
             document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.nome}</button>
+            <option class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.nome}</option>
             `
 
             document.getElementById("graficos").innerHTML += `
@@ -140,7 +141,7 @@
                 </div>
             `
 
-            obterDadosGrafico(item.id)
+            obterDadosGrafico(item.id, idUsuario)
         });
 
         if (livros.length > 0) {
@@ -156,7 +157,7 @@
 
     function exibirAquario(idLivro) {
         let todosOsGraficos = JSON.parse(sessionStorage.LIVROS);
-        let idUsuario = JSON.parse(sessionStorage.ID_USUARIO);
+        let idUsuario = INT.parse(sessionStorage.ID_USUARIO);
 
         for (i = 0; i < todosOsGraficos.length; i++) {
             // exibindo - ou não - o gráfico
@@ -202,9 +203,9 @@
 
         alterarTitulo(idLivro)
 
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
 
         fetch(`/medidas/ultimas/${idLivro}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -212,7 +213,7 @@
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idLivro);
+                    plotarGrafico(resposta, idLivro, idUsuario);
 
                 });
             } else {
@@ -226,7 +227,7 @@
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idUsuario);
+                    plotarGrafico(resposta,idLivro, idUsuario);
 
                 });
             } else {

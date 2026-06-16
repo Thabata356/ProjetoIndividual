@@ -87,6 +87,8 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
      function atualizarPaginasLidas() {
+        idUsuario.innerHTML = sessionStorage.ID_USUARIO;
+        idLivro.innerHTML = sessionStorage.LIVROS;
         var nomeLivro = (document.getElementById("ipt_nome").value);
         var nomeAutor = (document.getElementById("ipt_autor").value);
         var qtdPaginas = Number(document.getElementById("ipt_total").value);
