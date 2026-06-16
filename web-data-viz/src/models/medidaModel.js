@@ -30,12 +30,14 @@ function buscarMedidasEmTempoReal(idLivro) {
 
 function buscarCincoGeneros(idUsuario) {
 
-    var instrucaoSql = `SELECT genero, COUNT(*) AS total
+    var instrucaoSql = `
+                        SELECT genero, COUNT(*) AS total 
                         FROM livro 
-                        GROUP BY genero
-                        wHERE fk_usuario = ${idUsuario}
+                        WHERE fk_usuario = ${idUsuario}
+                        GROUP BY genero 
                         ORDER BY total DESC 
-                        LIMIT 5;
+LIMIT 5;
+
                         `;
 
 

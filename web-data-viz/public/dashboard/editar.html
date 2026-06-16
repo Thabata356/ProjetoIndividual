@@ -84,5 +84,49 @@
 </html>
 
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+     function atualizarPaginasLidas() {
+        var nomeLivro = (document.getElementById("ipt_nome").value);
+        var nomeAutor = (document.getElementById("ipt_autor").value);
+        var qtdPaginas = Number(document.getElementById("ipt_total").value);
+        var paginasLidas = Number(document.getElementById("ipt_lidas").value);
+
+        if (nomeLivro == "" || nomeAutor == "" || qtdPaginas == "" || paginasLidas == "") {
+            alert("Por favor, preencha todos os campos!");
+            return;
+        }
+
+        console.log(`Enviando: Livro ${nomeLivro}, Autor: ${nomeAutor} ,Total: ${qtdPaginas}, Lidas: ${paginasLidas}`);
+
+        if (qtdPaginas < paginasLidas) { 
+            alert("Erro: As páginas lidas não podem ser maiores que o total de páginas do livro!");
+            return;
+        }
+
+        fetch(`/livro/atualizarPaginas`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                paginasLidas: ipt_paginasLidas.value,
+                qtdPaginas: ipt_quantidadePaginas.value
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                console.log("Histórico de leitura atualizado com sucesso!");
+                alert("Leitura registrada com sucesso!");
+                
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
     
 </script>

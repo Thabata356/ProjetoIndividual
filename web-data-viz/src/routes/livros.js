@@ -7,4 +7,8 @@ router.get("/:id", function (req, res) {
   livroController.buscarLivrosporUsuario(req, res);
 });
 
+router.post("/atualizarPaginas", function (req, res) {
+  livroController.atualizarPaginasLidas(req, res);
+});
+
 module.exports = router;

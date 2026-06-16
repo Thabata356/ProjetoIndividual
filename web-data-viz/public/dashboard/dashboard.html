@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FMV | Dashboards</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -32,7 +32,7 @@
 
     <div class="janela">
         <div class="header-left">
-           <img src="../assets/imgs/logo-branca.png" alt="">
+            <img src="../assets/imgs/logo-branca.png" alt="">
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -62,42 +62,42 @@
 
         </div>
 
+    </div>
+
+    <div class="dash">
+        <div id="alerta">
         </div>
 
-        <div class="dash">
-            <div id="alerta">
+        <div class="box-agrupamento Kpis">
+
+            <div class="grupo-kpis">
+                <div class="kpi" id="kpi2">
+                    <h4>LIVROS CONCLÚIDOS</h4>
+                    <h3>0</h3>
+                </div>
             </div>
 
-             <div class="box-agrupamento Kpis">
-
-                <div class="grupo-kpis">
-                    <div class="kpi" id="kpi2">
-                        <h4>LIVROS CONCLÚIDOS</h4>
-                        <h3>0</h3>
-                    </div>
+            <div class="grupo-kpis">
+                <div class="kpi" id="kpi1">
+                    <h4>PÁGINA LIDAS</h4>
+                    <h3>0</h3>
                 </div>
-
-                <div class="grupo-kpis">
-                    <div class="kpi" id="kpi1">
-                        <h4>PÁGINA LIDAS</h4>
-                        <h3>0</h3>
-                    </div>
-                </div>
-
-                <div class="grupo-kpis">
-                    <div class="kpi" id="kpi3">
-                        <h4>META DO ANO</h4>
-                        <h3>0</h3>
-                    </div>
-                </div>
-
             </div>
 
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+            <div class="grupo-kpis">
+                <div class="kpi" id="kpi3">
+                    <h4>META DO ANO</h4>
+                    <h3>0</h3>
+                </div>
             </div>
-            <div id="graficos"></div>
+
         </div>
+
+        <div class="btns-dash" id="btnAquario">
+            <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+        </div>
+        <div id="graficos"></div>
+    </div>
     </div>
 
 
@@ -198,7 +198,7 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idLivro) {
+    function obterDadosGrafico(idLivro, idUsuario) {
 
         alterarTitulo(idLivro)
 
@@ -218,15 +218,15 @@
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
             }
-        })
+        });
 
-        fetch(`/medidas/ultimas/${idLivro}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/cinco-generos/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idLivro);
+                    plotarGrafico(resposta, idUsuario);
 
                 });
             } else {
@@ -259,10 +259,10 @@
                 borderColor: '#003366',
                 tension: 0.1
             },
-        ]
+            ]
         };
 
-         // Criando estrutura para plotar gráfico - labels
+        // Criando estrutura para plotar gráfico - labels
         let labels2 = [];
 
         // Criando estrutura para plotar gráfico - dados
@@ -276,7 +276,7 @@
                 borderColor: '#003366',
                 tension: 0.1
             },
-        ]
+            ]
         };
 
         console.log('----------------------------------------------')
@@ -386,7 +386,7 @@
 
 
 
-            fetch(`/medidas/cinco-generos/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/cinco-generos/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -398,7 +398,7 @@
                     if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
                         avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                     } else {
-                        dados.labels.shift(); 
+                        dados.labels.shift();
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
 
