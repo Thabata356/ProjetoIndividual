@@ -275,12 +275,14 @@ body {
   width: 70%;
   margin: auto;
   padding-top: 10px;
+  margin-bottom: 30px;
 }
 
 .tituloGraficos {
   color: rgb(216, 216, 216);
   display: flex;
   justify-content: center;
+  margin-top: 70px;
 }
 
 .btn-chart {

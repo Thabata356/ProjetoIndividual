@@ -17,12 +17,13 @@ function buscarLivrosporUsuario(req, res) {
 }
 
 function atualizarPaginasLidas(req, res) {
-    var nomeLivro = req.params.nomeLivro;
-    var nomeAutor = req.params.nomeAutor;
-    var qtdPaginas = req.body.qtdPaginas;
     var paginasLidas = req.body.paginasLidas;
+    var qtdPaginas = req.body.qtdPaginas;
+    var nomeLivro = req.body.nomeLivro;
+    var nomeAutor = req.body.nomeAutor;
+    var idUsuario = req.body.idUsuario;
 
-    livroModel.atualizarPaginasLidas(paginasLidas, qtdPaginas, nomeLivro, nomeAutor)
+    livroModel.atualizarPaginasLidas(paginasLidas, qtdPaginas, nomeLivro, nomeAutor, idUsuario)
         .then(
             function (resultado) {
                 res.json(resultado);

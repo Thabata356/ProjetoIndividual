@@ -75,7 +75,7 @@
             <p>Quantidade de páginas lidas: </p>
             <input type="text" id="ipt_lidas">
 
-            <button class="btn-atualizar" onclick="atualizar()">Atualizar páginas</button>
+            <button class="btn-atualizar" onclick="atualizarPaginasLidas()">Atualizar páginas</button>
         </div>
     </div>
 
@@ -86,9 +86,9 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-     function atualizarPaginasLidas() {
-        idUsuario.innerHTML = sessionStorage.ID_USUARIO;
-        idLivro.innerHTML = sessionStorage.LIVROS;
+    function atualizarPaginasLidas() {
+        let idUsuario = sessionStorage.ID_USUARIO;
+
         var nomeLivro = (document.getElementById("ipt_nome").value);
         var nomeAutor = (document.getElementById("ipt_autor").value);
         var qtdPaginas = Number(document.getElementById("ipt_total").value);
@@ -101,26 +101,29 @@
 
         console.log(`Enviando: Livro ${nomeLivro}, Autor: ${nomeAutor} ,Total: ${qtdPaginas}, Lidas: ${paginasLidas}`);
 
-        if (qtdPaginas < paginasLidas) { 
+        if (qtdPaginas < paginasLidas) {
             alert("Erro: As páginas lidas não podem ser maiores que o total de páginas do livro!");
             return;
         }
 
-        fetch(`/livro/atualizarPaginas`, {
+        fetch(`/livros/atualizarPaginas`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                paginasLidas: ipt_paginasLidas.value,
-                qtdPaginas: ipt_quantidadePaginas.value
+                paginasLidas: paginasLidas,
+                qtdPaginas: qtdPaginas,
+                nomeLivro: nomeLivro,
+                nomeAutor: nomeAutor,
+                idUsuario: idUsuario
             })
         }).then(function (resposta) {
 
             if (resposta.ok) {
                 console.log("Histórico de leitura atualizado com sucesso!");
                 alert("Leitura registrada com sucesso!");
-                
+
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -130,5 +133,5 @@
             console.log(`#ERRO: ${resposta}`);
         });
     }
-    
+
 </script>
