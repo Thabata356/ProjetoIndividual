@@ -78,7 +78,7 @@
             <p>Total de páginas: </p>
             <input type="text" id="ipt_total">
 
-            <button class="btn-cadastrar" onclick="cadatrar()">Cadastrar um livro</button>
+            <button class="btn-cadastrar" onclick="cadastrarLivro()">Cadastrar um livro</button>
         </div>
     </div>
 
@@ -87,5 +87,49 @@
 </html>
 
 <script>
-     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    let b_usuario = sessionStorage.NOME_USUARIO;
+
+    function cadastrarLivro() {
+        let idUsuario = sessionStorage.ID_USUARIO;
+
+        var nomeLivro = (document.getElementById("ipt_nome").value);
+        var nomeAutor = (document.getElementById("ipt_autor").value);
+        var generoLivro =  (document.getElementById("ipt_genero").value);
+        var editoraLivro =  (document.getElementById("ipt_editora").value);
+        var qtdPaginas = Number(document.getElementById("ipt_total").value);
+
+        if (nomeLivro == "" || nomeAutor == "" || qtdPaginas == "" || generoLivro == "" || editoraLivro == "") {
+            alert("Por favor, preencha todos os campos!");
+            return;
+        }
+
+        console.log(`Enviando: Livro ${nomeLivro}, Autor: ${nomeAutor}, Genero: ${generoLivro}, Editora: ${editoraLivro}, Total: ${qtdPaginas}, Usuario: ${idUsuario} `);
+
+        fetch(`/livros/atualizarPaginas`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeLivro: nomeLivro,
+                nomeAutor: nomeAutor,
+                generoLivro: generoLivro,
+                editoraLivro: editoraLivro,
+                qtdPaginas: qtdPaginas
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                console.log("Histórico de leitura atualizado com sucesso!");
+                alert("Leitura registrada com sucesso!");
+
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
 </script>

@@ -11,11 +11,11 @@ function buscarLivrosporUsuario(id) {
 function atualizarPaginasLidas(paginasLidas, qtdPaginas, nomeLivro, nomeAutor, idUsuario) {
 
   var instrucaoSql = `INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario)
-SELECT ${paginasLidas}, now(), id , ${idUsuario}
-FROM livro 
-WHERE nome = '${nomeLivro}' 
-  AND autor = '${nomeAutor}' 
-  AND total_paginas = ${qtdPaginas};`;
+                        SELECT ${paginasLidas}, now(), id , ${idUsuario}
+                        FROM livro 
+                        WHERE nome = '${nomeLivro}' 
+                          AND autor = '${nomeAutor}' 
+                          AND total_paginas = ${qtdPaginas};`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
