@@ -14,7 +14,7 @@ function buscarUltimasMedidas(idLivro, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idLivro) {
+function buscarMedidasEmTempoReal(idLivro, idUsuario) {
 
     var instrucaoSql = `SELECT 
             paginas_lidas,
