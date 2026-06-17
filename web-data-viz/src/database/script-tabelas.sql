@@ -86,3 +86,20 @@ SELECT
 select * from historico_leitura;
 
 select * from livro;
+
+SELECT COUNT(id) AS total_livros 
+FROM livro 
+WHERE fk_usuario = 1;
+
+SELECT ROUND(AVG(paginas_lidas), 2) AS media_paginas_lidas 
+FROM historico_leitura 
+WHERE fk_usuario = 1;
+
+SELECT SUM(sub.max_paginas) AS total_paginas_reais
+FROM (
+    SELECT MAX(h.paginas_lidas) AS max_paginas
+    FROM historico_leitura h
+    JOIN livro l ON h.fk_livro = l.id
+    WHERE h.fk_usuario = 1 AND l.genero = 'Ficção Distópica'
+    GROUP BY h.fk_livro
+) AS sub;
