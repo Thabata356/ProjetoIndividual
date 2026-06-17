@@ -262,15 +262,6 @@ body {
   display: inline-block;
 }
 
-.btns-dash {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  flex-wrap: wrap;
-  padding: 0 30% 0 30%;
-}
-
 .graph {
   width: 70%;
   margin: auto;
@@ -285,28 +276,38 @@ body {
   margin-top: 70px;
 }
 
-.btn-chart {
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: #e6005a;
+.btns-dash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto; 
+  width: 400px;
+  font-family: "Montserrat", sans-serif;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #c8d9e6;
   background-color: white;
-  margin: 5px;
-  border-radius: 3px;
-  cursor: pointer
+  color: #003366;
+}
+
+.btn-chart {
+  font-family: "Montserrat", sans-serif;
+  color: #003366;
+  background-color: white;
+  font-size: 16px;
 }
 
 .btn-pink {
   color: white;
-  background-color: #e6005a;
+  background-color: #003366;
+  margin-right: 500px;
 }
 
 .btn-white {
-  color: #e6005a;
+  color: #003366;
   background-color: white;
-
+  margin-right: 500px;
 }
 
 .label-captura {
@@ -470,13 +471,15 @@ canvas {
   color: #f5f3ef;
 }
 
-.btn-nav:hover{
+.btn-nav:hover,
+.btn-logout:hover{
   border: solid 1px #f5f3ef;
   background-color: #003366;
-  color: #f5f3ef !important;
+  color: #f5f3ef;
 }
 
-.btn-nav:hover h3{
+.btn-nav:hover h3,
+.btn-logout:hover h3{
   color: #f5f3ef;
 }
 
@@ -501,10 +504,6 @@ canvas {
   color: #003366;
   margin: 0;
   padding: 0;
-}
-
-.btn-logout:hover {
-  background-color: #c8d9e6;
 }
 
 /*=========================================== EDITAR ==================================================*/
