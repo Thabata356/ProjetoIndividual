@@ -53,9 +53,36 @@ INSERT INTO livro(nome, autor, genero, editora, total_paginas, fk_usuario) VALUE
 
 INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario) VALUES( 135, now(), 1, 1);
 INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario) VALUES( 264, now(), 1, 1);
+INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario) VALUES( 344, now(), 1, 1);
+INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario) VALUES( 379, now(), 1, 1);
+INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario) VALUES( 400, now(), 1, 1);
+INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario) VALUES( 470, now(), 1, 1);
 
 INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario) VALUES( 135, now(), 2, 1);
 INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario) VALUES( 264, now(), 2, 1);
 
 INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario) VALUES( 135, now(), 3, 1);
 INSERT INTO historico_leitura (paginas_lidas, data_registro, fk_livro, fk_usuario) VALUES( 264, now(), 3, 1);
+
+
+
+SELECT 
+            paginas_lidas,
+            data_registro,
+                        DATE_FORMAT(data_registro, '%H:%i:%s') AS momento_grafico
+                    FROM historico_leitura 
+                    WHERE fk_livro = 1
+                    ORDER BY data_registro;
+                    
+                    
+                    SELECT 
+            paginas_lidas,
+            data_registro,
+                        DATE_FORMAT(data_registro, '%H:%i:%s') AS momento_grafico
+                    FROM historico_leitura 
+                    WHERE fk_livro = 1
+                    ORDER BY data_registro;
+                    
+select * from historico_leitura;
+
+select * from livro;

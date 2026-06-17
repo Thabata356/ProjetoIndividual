@@ -21,8 +21,18 @@ function atualizarPaginasLidas(paginasLidas, qtdPaginas, nomeLivro, nomeAutor, i
   return database.executar(instrucaoSql);
 }
 
+function cadastrarLivro(nomeLivro, nomeAutor, generoLivro, editoraLivro, qtdPaginas, idUsuario) {
+
+  var instrucaoSql = `INSERT INTO livro (id, nome, autor, genero, editora, total_paginas, fk_usuario)
+                        VALUES(id, '${nomeLivro}', '${nomeAutor}', '${generoLivro}', '${editoraLivro}', ${qtdPaginas}, ${idUsuario})`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
   buscarLivrosporUsuario,
-  atualizarPaginasLidas
+  atualizarPaginasLidas,
+  cadastrarLivro
 }

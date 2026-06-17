@@ -17,28 +17,51 @@ function buscarLivrosporUsuario(req, res) {
 }
 
 function atualizarPaginasLidas(req, res) {
-    var paginasLidas = req.body.paginasLidas;
-    var qtdPaginas = req.body.qtdPaginas;
-    var nomeLivro = req.body.nomeLivro;
-    var nomeAutor = req.body.nomeAutor;
-    var idUsuario = req.body.idUsuario;
+  var paginasLidas = req.body.paginasLidas;
+  var qtdPaginas = req.body.qtdPaginas;
+  var nomeLivro = req.body.nomeLivro;
+  var nomeAutor = req.body.nomeAutor;
+  var idUsuario = req.body.idUsuario;
 
-    livroModel.atualizarPaginasLidas(paginasLidas, qtdPaginas, nomeLivro, nomeAutor, idUsuario)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        )
-        .catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+  livroModel.atualizarPaginasLidas(paginasLidas, qtdPaginas, nomeLivro, nomeAutor, idUsuario)
+    .then(
+      function (resultado) {
+        res.json(resultado);
+      }
+    )
+    .catch(
+      function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+      }
+    );
+}
+
+function cadastrarLivro(req, res) {
+  var nomeLivro = req.body.nomeLivro;
+  var nomeAutor = req.body.nomeAutor;
+  var generoLivro = req.body.generoLivro;
+  var editoraLivro = req.body.editoraLivro;
+  var qtdPaginas = req.body.qtdPaginas;
+  var idUsuario = req.body.idUsuario;
+  livroModel.cadastrarLivro(nomeLivro, nomeAutor, generoLivro, editoraLivro, qtdPaginas, idUsuario)
+    .then(
+      function (resultado) {
+        res.json(resultado);
+      }
+    )
+    .catch(
+      function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+      }
+    );
 }
 
 module.exports = {
   buscarLivrosporUsuario,
-  atualizarPaginasLidas
+  atualizarPaginasLidas,
+  cadastrarLivro
 }

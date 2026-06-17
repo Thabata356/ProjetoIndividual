@@ -90,7 +90,8 @@
     let b_usuario = sessionStorage.NOME_USUARIO;
 
     function cadastrarLivro() {
-        let idUsuario = sessionStorage.ID_USUARIO;
+        var idUsuario = sessionStorage.ID_USUARIO;
+        console.log("ID USUARIO:" + idUsuario);
 
         var nomeLivro = (document.getElementById("ipt_nome").value);
         var nomeAutor = (document.getElementById("ipt_autor").value);
@@ -105,7 +106,7 @@
 
         console.log(`Enviando: Livro ${nomeLivro}, Autor: ${nomeAutor}, Genero: ${generoLivro}, Editora: ${editoraLivro}, Total: ${qtdPaginas}, Usuario: ${idUsuario} `);
 
-        fetch(`/livros/atualizarPaginas`, {
+        fetch(`/livros/cadastrarNovoLivro`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -115,7 +116,8 @@
                 nomeAutor: nomeAutor,
                 generoLivro: generoLivro,
                 editoraLivro: editoraLivro,
-                qtdPaginas: qtdPaginas
+                qtdPaginas: qtdPaginas,
+                idUsuario: idUsuario
             })
         }).then(function (resposta) {
 

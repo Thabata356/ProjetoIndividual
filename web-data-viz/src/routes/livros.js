@@ -11,4 +11,9 @@ router.post("/atualizarPaginas", function (req, res) {
   livroController.atualizarPaginasLidas(req, res);
 });
 
+router.post("/cadastrarNovoLivro", function (req, res) {
+  livroController.cadastrarLivro(req, res);
+});
+
+
 module.exports = router;
