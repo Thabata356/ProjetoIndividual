@@ -70,21 +70,21 @@
 
             <div class="grupo-kpis">
                 <div class="kpi" id="kpi2">
-                    <h4>LIVROS CONCLÚIDOS</h4>
+                    <h4>MÉDIA DAS PÁGINAS LIDAS</h4>
                     <h3>0</h3>
                 </div>
             </div>
 
             <div class="grupo-kpis">
                 <div class="kpi" id="kpi1">
-                    <h4>PÁGINA LIDAS</h4>
+                    <h4>TODOS OS LIVROS</h4>
                     <h3>0</h3>
                 </div>
             </div>
 
             <div class="grupo-kpis">
                 <div class="kpi" id="kpi3">
-                    <h4>META DO ANO</h4>
+                    <h4>PÁGINAS LIDAS DE FICÇÃO DISTÓPICA</h4>
                     <h3>0</h3>
                 </div>
             </div>
@@ -109,7 +109,13 @@
 <script>
     b_usuario.innerHTML = `${sessionStorage.NOME_USUARIO}`;
     let idUsuario = sessionStorage.ID_USUARIO;
-    console.log(idUsuario)
+
+    function buscarDadosKpis(){
+        var todosLivro = (document.getElementById("kpi1").value);
+        var media = (document.getElementById("kpi2").value);
+        var genero = (document.getElementById("kpi3").value);
+
+    }
 
     async function buscarLivrosporUsuario(idUsuario) {
 
@@ -146,9 +152,8 @@
                 </div>
             `
 
-            buscarLivrosporUsuario(idUsuario);
-            exibirAquarioexibirAquario(item.id)
-            alterarTitulo(item.id);
+            // exibirAquarioexibirAquario(item.id);
+            // alterarTitulo(item.id);
 
                         obterDadosGrafico(item.id, idUsuario)
                     });

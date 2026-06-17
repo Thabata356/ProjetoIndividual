@@ -15,4 +15,8 @@ router.get("/cinco-generos/:idUsuario", function (req, res) {
     medidaController.buscarCincoGeneros(req, res);
 })
 
+router.get("/dados-kpis/:idUsuario", function (req, res) {
+    medidaController.buscarDadosKpis(req, res);
+})
+
 module.exports = router;

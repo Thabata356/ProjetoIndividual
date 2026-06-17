@@ -519,9 +519,9 @@ h3 {
 .loading-div {
   position: absolute;
   display: none;
-   justify-content: center;
-   margin-top: 440px;
-   margin-left: 200px;
+  justify-content: center;
+  margin-top: 440px;
+  margin-left: 200px;
 }
 
 .loading-div img {
@@ -545,20 +545,21 @@ h3 {
 
 .card_erro {
   display: none;
-  background-color: #fff;
-  color: black;
-  width: 230px;
-  position: fixed;
+  background-color: #003366;
+  color: white;
+  width: 400px;
+  position: absolute;
   border-radius: 4px;
-  border: #ED145B 3px solid;
+  border: #003366 3px solid;
   padding: 10px;
-  margin-left: 100%;
-  margin-right: -30%;
+  margin-left: 300px;
+  margin-right: -85%;
+  margin-top: -290px;
 }
 
 .card_erro #mensagem_erro{
   font-weight: 500;
-  font-size: 20px;
+  font-size: 14px;
 }
 
 .btn {
