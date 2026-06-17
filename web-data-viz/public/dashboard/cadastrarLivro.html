@@ -39,17 +39,19 @@
                 </a>
             </div>
 
-            <div class="btn-nav-white">
+            <div class="btn-nav">
                 <a href="./editar.html">
                     <h3>Editar</h3>
                 </a>
             </div>
 
-            <div class="btn-nav">
-                <a href="./cadastrarLivro.html">
+            <a href="./cadastrarLivro.html">
+                <div class="btn-nav agora">
+                    <img class="icon" src="../assets/imgs/grafico-de-barras.png">
+                    <img class="icon-branco" src="../assets/imgs/grafico-de-barras-branca.png" alt="">
                     <h3>Cadastrar Livro</h3>
-                </a>
-            </div>
+                </div>
+            </a>
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
@@ -95,8 +97,8 @@
 
         var nomeLivro = (document.getElementById("ipt_nome").value);
         var nomeAutor = (document.getElementById("ipt_autor").value);
-        var generoLivro =  (document.getElementById("ipt_genero").value);
-        var editoraLivro =  (document.getElementById("ipt_editora").value);
+        var generoLivro = (document.getElementById("ipt_genero").value);
+        var editoraLivro = (document.getElementById("ipt_editora").value);
         var qtdPaginas = Number(document.getElementById("ipt_total").value);
 
         if (nomeLivro == "" || nomeAutor == "" || qtdPaginas == "" || generoLivro == "" || editoraLivro == "") {

@@ -438,38 +438,49 @@ canvas {
   font-weight: 800;
 }
 
-.btn-nav,
-.btn-nav-white {
-  display: flex;
+.btn-nav {
+  display: flex; 
   align-items: center;
   justify-content: center;
-  background-color: #c8d9e6;
+  background-color: #f5f3ef;
   border: none;
-  width: 140px;
-  height: 35px;
-  border-radius: 9px;
-  font-weight: 600;
+  width: 160px;
+  height: 40px;
+  border-radius: 8px;
   cursor: pointer;
-  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  margin-top: -10px;
 }
 
 .btn-nav h3 {
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
+  font-weight: 600;
   color: #003366;
-}
-
-.btn-nav-white h3 {
-  color: #003366;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-}
-
-.btn-nav h3,
-.btn-logout h3 {
   margin: 0;
   padding: 0;
 }
+
+.btn-nav .icon{
+  display: flex;
+  width: 20px;
+  height: 20px;
+}
+
+.btn-nav .icon-branco{
+  display: none;
+}
+
+.agora .icon-branco{
+  display: flex;
+  width: 20px;
+  height: 20px;
+}
+
+.agora .icon{
+  display: none;
+}
+
 
 .btn-nav:hover,
 .btn-nav-white:hover {
@@ -482,17 +493,21 @@ canvas {
   justify-content: center;
   background-color: #f5f3ef;
   border: none;
-  width: 140px;
-  height: 35px;
-  border-radius: 9px;
-  font-weight: 600;
+  width: 160px;
+  height: 40px;
+  border-radius: 8px;
   cursor: pointer;
-  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  margin-top: 20px;
 }
 
 .btn-logout h3 {
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
+  font-weight: 600;
   color: #003366;
+  margin: 0;
+  padding: 0;
 }
 
 .btn-logout:hover {

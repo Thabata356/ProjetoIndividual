@@ -40,7 +40,7 @@ create table historico_leitura (
 	fk_livro int,
     fk_usuario int,
 	CONSTRAINT fk_livro_historico_leitura FOREIGN KEY (fk_livro) REFERENCES livro(id),
-	CONSTRAINT fk_usuario_historico_leitura FOREIGN KEY (fk_livro) REFERENCES livro(id)
+	CONSTRAINT fk_usuario_historico_leitura FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 
 INSERT INTO usuario (nome, email, senha) VALUES('Thabata', 't@gmail.com', '123456');
