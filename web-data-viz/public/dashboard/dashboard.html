@@ -26,7 +26,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="buscarLivrosporUsuario(idUsuario)">
+<body onload="buscarLivrosporUsuario(idUsuario), buscarDadosKpis(idUsuario)">
 
     <div class="janela">
         <div class="header-left">
@@ -111,10 +111,28 @@
     let idUsuario = sessionStorage.ID_USUARIO;
     let livros = [];
 
-    function buscarDadosKpis() {
-        var todosLivro = (document.getElementById("kpi1").value);
-        var media = (document.getElementById("kpi2").value);
-        var genero = (document.getElementById("kpi3").value);
+    function buscarDadosKpis(idUsuario) {
+
+        fetch(`/medidas/dados-kpis/${idUsuario}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                var todosLivro = (document.getElementById("kpi1").innerHTML);
+                var media = (document.getElementById("kpi2").innerHTML);
+                var genero = (document.getElementById("kpi3").innerHTML);
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
 
     }
 
