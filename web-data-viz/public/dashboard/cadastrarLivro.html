@@ -122,13 +122,12 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                console.log("Histórico de leitura atualizado com sucesso!");
-                alert("Leitura registrada com sucesso!");
+                console.log("Cadastro de livros feito com sucesso!");
 
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                throw ("Houve um erro ao tentar realizar a o cadstro de um livro! Código da resposta: " + resposta.status);
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);

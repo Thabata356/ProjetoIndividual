@@ -22,13 +22,11 @@
     <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!--FONT AWESOME-->
-    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="buscarLivrosporUsuario()">
+<body>
 
     <div class="janela">
         <div class="header-left">
@@ -93,6 +91,7 @@
 
         </div>
         <select class="btns-dash" id="btnAquario">
+            <!-- colocar o onclick aqui em cima? -->
             <option class="btn-chart">Selecione um livro</option>
         </select>
         <!-- <div class="btns-dash" id="btnAquario">
@@ -108,18 +107,25 @@
 </html>
 
 <script>
-    b_usuario.innerHTML= `${sessionStorage.NOME_USUARIO}`;
+    b_usuario.innerHTML = `${sessionStorage.NOME_USUARIO}`;
     let idUsuario = sessionStorage.ID_USUARIO;
+    console.log(idUsuario)
 
-    function buscarLivrosporUsuario() {
-        var livros = JSON.parse(sessionStorage.LIVROS);
-        livros.forEach(item => {
+    async function buscarLivrosporUsuario(idUsuario) {
 
-            document.getElementById("btnAquario").innerHTML += `
-            <option value="${item.id}" class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.nome}</option>
+        let livros = await fetch(`/livros/${idUsuario}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    livros.forEach(item => {
+
+                        document.getElementById("btnAquario").innerHTML += `
+            <option value="${item.id}" onclick="exibirAquario(${item.id})" class="btn-chart" id="btnAquario${item.id}">${item.nome}</option>
             `
 
-            document.getElementById("graficos").innerHTML += `
+                        document.getElementById("graficos").innerHTML += `
                 <div id="grafico${item.id}" class="display-none">
                     <h3 class="tituloGraficos">
                         <span id="tituloAquario${item.id}">${item.nome}.</span>
@@ -140,13 +146,20 @@
                 </div>
             `
 
-            obterDadosGrafico(item.id, idUsuario)
-        });
+            buscarLivrosporUsuario(idUsuario);
+            exibirAquarioexibirAquario(item.id)
+            alterarTitulo(item.id);
 
-        if (livros.length > 0) {
-            exibirAquario(livros[0].id)
-        }
-    }
+                        obterDadosGrafico(item.id, idUsuario)
+                    });
+
+                    if (livros.length > 0) {
+                        exibirAquario(livros[0].id)
+                    }
+                })
+            }
+        })
+    };
 
     function alterarTitulo(idLivro) {
         var tituloAquario = document.getElementById(`tituloAquario${idLivro}`)

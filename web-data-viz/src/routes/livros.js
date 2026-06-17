@@ -3,7 +3,7 @@ var router = express.Router();
 
 var livroController = require("../controllers/livroController");
 
-router.get("/:id", function (req, res) {
+router.get("/:idUsuario", function (req, res) {
   livroController.buscarLivrosporUsuario(req, res);
 });
 
