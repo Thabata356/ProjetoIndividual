@@ -35,26 +35,26 @@
             <img src="../assets/imgs/logo-branca.png" alt="">
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <h3>Olá, <span id="b_usuario"></span>!</h3>
             </div>
 
-            <div class="btn-nav">
-                <a href="./dashboard.html">
+            <a href="./dashboard.html">
+                <div class="btn-nav">
                     <h3>Dashboard</h3>
-                </a>
-            </div>
+                </div>
+            </a>
 
-            <div class="btn-nav-white">
-                <a href="./editar.html">
+            <a href="./editar.html">
+                <div class="btn-nav">
                     <h3>Editar</h3>
-                </a>
-            </div>
+                </div>
+            </a>
 
-            <div class="btn-nav">
-                <a href="./cadastrarLivro.html">
+            <a href="./cadastrarLivro.html">
+                <div class="btn-nav agora">
                     <h3>Cadastrar Livro</h3>
-                </a>
-            </div>
+                </div>
+            </a>
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
@@ -108,13 +108,12 @@
 </html>
 
 <script>
-    let b_usuario = sessionStorage.NOME_USUARIO;
+    b_usuario.innerHTML= `${sessionStorage.NOME_USUARIO}`;
     let idUsuario = sessionStorage.ID_USUARIO;
 
     function buscarLivrosporUsuario() {
         var livros = JSON.parse(sessionStorage.LIVROS);
         livros.forEach(item => {
-            console.log(livros, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
             document.getElementById("btnAquario").innerHTML += `
             <option value="${item.id}" class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.nome}</option>

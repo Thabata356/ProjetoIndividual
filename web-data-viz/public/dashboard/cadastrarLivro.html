@@ -30,25 +30,23 @@
             <img src="../assets/imgs/logo-branca.png" alt="">
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <h3>Olá, <span id="b_usuario"></span>!</h3>
             </div>
 
-            <div class="btn-nav">
-                <a href="./dashboard.html">
+            <a href="./dashboard.html">
+                <div class="btn-nav">
                     <h3>Dashboard</h3>
-                </a>
-            </div>
+                </div>
+            </a>
 
-            <div class="btn-nav">
-                <a href="./editar.html">
+            <a href="./editar.html">
+                <div class="btn-nav">
                     <h3>Editar</h3>
-                </a>
-            </div>
+                </div>
+            </a>
 
             <a href="./cadastrarLivro.html">
                 <div class="btn-nav agora">
-                    <img class="icon" src="../assets/imgs/grafico-de-barras.png">
-                    <img class="icon-branco" src="../assets/imgs/grafico-de-barras-branca.png" alt="">
                     <h3>Cadastrar Livro</h3>
                 </div>
             </a>
@@ -89,7 +87,7 @@
 </html>
 
 <script>
-    let b_usuario = sessionStorage.NOME_USUARIO;
+    b_usuario.innerHTML= `${sessionStorage.NOME_USUARIO}`;
 
     function cadastrarLivro() {
         var idUsuario = sessionStorage.ID_USUARIO;

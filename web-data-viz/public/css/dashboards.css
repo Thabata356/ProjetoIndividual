@@ -461,30 +461,23 @@ canvas {
   padding: 0;
 }
 
-.btn-nav .icon{
-  display: flex;
-  width: 20px;
-  height: 20px;
+.agora{
+  border: solid 1px #f5f3ef;
+  background-color: #003366;
 }
 
-.btn-nav .icon-branco{
-  display: none;
+.agora h3{
+  color: #f5f3ef;
 }
 
-.agora .icon-branco{
-  display: flex;
-  width: 20px;
-  height: 20px;
+.btn-nav:hover{
+  border: solid 1px #f5f3ef;
+  background-color: #003366;
+  color: #f5f3ef !important;
 }
 
-.agora .icon{
-  display: none;
-}
-
-
-.btn-nav:hover,
-.btn-nav-white:hover {
-  background-color: #f5f3ef;
+.btn-nav:hover h3{
+  color: #f5f3ef;
 }
 
 .btn-logout {
