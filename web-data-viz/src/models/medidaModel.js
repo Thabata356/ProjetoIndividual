@@ -35,7 +35,7 @@ function buscarCincoGeneros(idUsuario) {
                         FROM livro 
                         WHERE fk_usuario = ${idUsuario}
                         GROUP BY genero 
-                        ORDER BY total DESC 
+                        ORDER BY total ASC 
 LIMIT 5;
 
                         `;

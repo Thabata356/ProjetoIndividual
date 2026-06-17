@@ -26,7 +26,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body>
+<body onload="buscarLivrosporUsuario(idUsuario)">
 
     <div class="janela">
         <div class="header-left">
@@ -90,7 +90,7 @@
             </div>
 
         </div>
-        <select class="btns-dash" id="btnAquario">
+        <select class="btns-dash" id="btnAquario" onchange="exibirAquario(this.value)">
             <!-- colocar o onclick aqui em cima? -->
             <option class="btn-chart">Selecione um livro</option>
         </select>
@@ -109,23 +109,29 @@
 <script>
     b_usuario.innerHTML = `${sessionStorage.NOME_USUARIO}`;
     let idUsuario = sessionStorage.ID_USUARIO;
+    let livros = [];
 
-    function buscarDadosKpis(){
+    function buscarDadosKpis() {
         var todosLivro = (document.getElementById("kpi1").value);
         var media = (document.getElementById("kpi2").value);
         var genero = (document.getElementById("kpi3").value);
 
     }
 
-    async function buscarLivrosporUsuario(idUsuario) {
+    function buscarLivrosporUsuario(idUsuario) {
 
-        let livros = await fetch(`/livros/${idUsuario}`).then(function (response) {
+        fetch(`/livros/${idUsuario}`).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    livros.forEach(item => {
+                    livros = resposta;
+                    console.log("Livros:" + livros[1].id);
+                    for (let i = 0; i < livros.length; i++) {
+                        let item = livros[i];
+                        console.log("ITEM:" + item);
+                        console.log("ITEM!:" + item.id);
 
                         document.getElementById("btnAquario").innerHTML += `
             <option value="${item.id}" onclick="exibirAquario(${item.id})" class="btn-chart" id="btnAquario${item.id}">${item.nome}</option>
@@ -152,40 +158,40 @@
                 </div>
             `
 
-            // exibirAquarioexibirAquario(item.id);
-            // alterarTitulo(item.id);
+                        // exibirAquarioexibirAquario(item.id);
+                        // alterarTitulo(item.id);
 
                         obterDadosGrafico(item.id, idUsuario)
-                    });
-
+                    }
                     if (livros.length > 0) {
+                        // document.getElementById("btnAquario").value = livros[0].id;
                         exibirAquario(livros[0].id)
                     }
-                })
+                });
             }
         })
     };
 
     function alterarTitulo(idLivro) {
         var tituloAquario = document.getElementById(`tituloAquario${idLivro}`)
-        var descricao = JSON.parse(sessionStorage.LIVROS).find(item => item.id == idLivro).nome;
+        var descricao = livros.find(item => item.id == idLivro).nome;
         tituloAquario.innerHTML = "<span style='color: #1C1C1C'> Histórico de leitura do livro: </span>  <span style='color: #003366'>" + descricao + "</span>"
     }
 
     function exibirAquario(idLivro) {
-        let todosOsGraficos = JSON.parse(sessionStorage.LIVROS);
+        //Troquei os todos os graficos por livro
 
-        for (i = 0; i < todosOsGraficos.length; i++) {
+        for (let i = 0; i < livros.length; i++) {
             // exibindo - ou não - o gráfico
-            if (todosOsGraficos[i].id != idLivro) {
-                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
+            if (livros[i].id != idLivro) {
+                let elementoAtual = document.getElementById(`grafico${livros[i].id}`)
                 if (elementoAtual.classList.contains("display-block")) {
                     elementoAtual.classList.remove("display-block")
                 }
                 elementoAtual.classList.add("display-none")
 
                 // alterando estilo do botão
-                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
+                let btnAtual = document.getElementById(`btnAquario${livros[i].id}`)
                 if (btnAtual.classList.contains("btn-pink")) {
                     btnAtual.classList.remove("btn-pink")
                 }
@@ -223,8 +229,15 @@
         //     clearTimeout(proximaAtualizacao);
         // }
 
+        console.log("ANDES DO FETCH" + idLivro);
         fetch(`/medidas/ultimas/${idLivro}`, { cache: 'no-store' }).then(function (response) {
+            console.log("DEPOiS DO FETCH" + idLivro);
             if (response.ok) {
+                if (response.status == 204) {
+                    console.log(`Livro ${idLivro} não possui dados de leitura.`);
+                    return;
+                }
+
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
@@ -300,16 +313,16 @@
         console.log(resposta)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
+        for (let i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.momento_grafico);
             dados.datasets[0].data.push(registro.paginas_lidas);
         }
 
-        for (j = 0; j < resposta2.length; j++) {
-            var registro = resposta2[j];
-            labels2.push(registro.genero);
-            dados2.datasets[0].data.push(registro.total);
+        for (let j = 0; j < resposta2.length; j++) {
+            var registro2 = resposta2[j];
+            labels2.push(registro2.genero);
+            dados2.datasets[0].data.push(registro2.total);
         }
 
         console.log('----------------------------------------------')
@@ -338,7 +351,7 @@
         );
 
         let myChart2 = new Chart(
-            document.getElementById(`myChartCanvas2${idUsuario}`),
+            document.getElementById(`myChartCanvas2${idLivro}`),
             config2
         );
 
