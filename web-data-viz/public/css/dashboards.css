@@ -448,7 +448,6 @@ canvas {
   height: 40px;
   border-radius: 8px;
   cursor: pointer;
-  box-sizing: border-box;
   margin-top: -10px;
 }
 
@@ -492,7 +491,6 @@ canvas {
   height: 40px;
   border-radius: 8px;
   cursor: pointer;
-  box-sizing: border-box;
   margin-top: 20px;
 }
 
