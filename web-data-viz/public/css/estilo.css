@@ -188,7 +188,7 @@ body {
 .quadrado1,
 .quadrado2,
 .quadrado3 {
-  border-radius: 13.6px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -201,37 +201,43 @@ body {
 .quadrado1 h2,
 .quadrado2 h2,
 .quadrado3 h2 {
-  font-size: 20px;
+  font-size: 27px;
+  margin: 0 0 4px 0; 
+  font-weight: 760;
 }
 
-.quadrado1,
-.quadrado2,
+.quadrado1 p,
+.quadrado2 p,
 .quadrado3 p {
-  font-size: 1rem;
+  font-size: 14px;
+  margin: 0;
+  font-weight: 500;
 }
 
 .quadrado1 {
-  height: 230px;
+  height: 200px;
   width: 200px;
   background-color: #003366;
   color: #ffffff;
   margin-right: 20px;
+  padding: 20px;
 }
 
 .quadrado2 {
-  height: 200px;
+  height: 200px; 
   width: 200px;
   background-color: #c8d9e6;
-  margin-top: 30px;
   color: #003366;
+  padding: 20px;
 }
 
 .quadrado3 {
-  height: 10rem;
+  height: 120px;
   width: 470px;
   background-color: #f5f3ef;
   border: 1px solid #dddddd;
   color: #003366;
+  padding: 15px;
 }
 
 
