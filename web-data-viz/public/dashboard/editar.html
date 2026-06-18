@@ -123,6 +123,11 @@
             if (resposta.ok) {
                 console.log("Histórico de leitura atualizado com sucesso!");
 
+                ipt_nome.value = "";
+                ipt_autor.value = "";
+                ipt_total.value = "";
+                ipt_lidas.value = "";
+
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {

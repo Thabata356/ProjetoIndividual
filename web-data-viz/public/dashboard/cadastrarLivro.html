@@ -68,7 +68,7 @@
             <p>Nome do autor: </p>
             <input type="text" id="ipt_autor">
 
-            <p>Genero do livro: </p>
+            <p>Gênero do livro: </p>
             <input type="text" id="ipt_genero">
 
             <p>Nome da editora: </p>
@@ -122,6 +122,12 @@
 
             if (resposta.ok) {
                 console.log("Cadastro de livros feito com sucesso!");
+
+                ipt_nome.value = "";
+                ipt_autor.value = "";
+                ipt_genero.value = "";
+                ipt_editora.value = "";
+                ipt_total.value = "";
 
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");

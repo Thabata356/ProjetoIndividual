@@ -35,7 +35,7 @@ function buscarCincoGeneros(idUsuario) {
                         FROM livro 
                         WHERE fk_usuario = ${idUsuario}
                         GROUP BY genero 
-                        ORDER BY total ASC 
+                        ORDER BY total DESC
 LIMIT 5;
 
                         `;
@@ -49,8 +49,8 @@ function buscarDadosKpis(idUsuario) {
 
     var instrucaoSql = `SELECT
     (SELECT COUNT(id) AS total_livros FROM livro WHERE fk_usuario = ${idUsuario}) as kpi1,
-    (SELECT ROUND(AVG(paginas_lidas), 0) AS media_paginas_lidas FROM historico_leitura WHERE fk_usuario =  ${idUsuario}) as kpi2,
-    (SELECT SUM(sub.max_paginas) AS total_paginas_reais FROM (SELECT MAX(h.paginas_lidas) AS max_paginas FROM historico_leitura h JOIN livro l ON h.fk_livro = l.id WHERE h.fk_usuario = ${idUsuario} AND l.genero = 'Ficção Distópica' GROUP BY h.fk_livro) AS sub) as kpi3;
+    (SELECT IFNULL(ROUND(AVG(paginas_lidas), 0), 0) AS media_paginas_lidas FROM historico_leitura WHERE fk_usuario =  ${idUsuario}) as kpi2,
+    (SELECT IFNULL(SUM(sub.max_paginas), 0) AS total_paginas_reais FROM (SELECT MAX(h.paginas_lidas) AS max_paginas FROM historico_leitura h JOIN livro l ON h.fk_livro = l.id WHERE h.fk_usuario = ${idUsuario} AND l.genero = 'Ficção Distópica' GROUP BY h.fk_livro) AS sub) as kpi3;
                         `;
 
 
