@@ -344,9 +344,9 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 17.5rem;
+  width: 280px;
   height: 160px;
-  border-radius: 1.25rem;
+  border-radius: 20px;
   margin-right: 20px;
   margin-top: 20px;
   background: #c8d9e6;
@@ -363,14 +363,14 @@ canvas {
 }
 
 .kpi h4 {
-  font-size: 0.8rem;
+  font-size: 12.8px;
   font-weight: 600;
   margin-bottom: 5px;
   color: #003366;
 }
 
 .kpi h3 {
-  font-size: 1.8rem;
+  font-size: 28.8px;
   font-weight: 800;
   color: #003366;
   margin: 0;
@@ -431,7 +431,7 @@ canvas {
 .hello h3 {
   color: #f5f3ef;
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 20px;
 }
 
 .hello h3 span {
@@ -545,8 +545,8 @@ canvas {
 
 input {
   width: 85%;
-  padding: 0.75rem;
-  border-radius: 0.625rem;
+  padding: 12px;
+  border-radius: 10px;
   border: 1px solid #c8d9e6;
   font-family: "Montserrat", sans-serif;
   margin-bottom: 12px;
@@ -555,10 +555,10 @@ input {
 
 .btn-atualizar,
 .btn-cadastrar {
-  padding: 0.75rem;
-  border-radius: 0.5rem;
+  padding: 12px;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 14.4px;
   cursor: pointer;
   border: none;
   background-color: #c8d9e6;
@@ -568,7 +568,6 @@ input {
   font-family: "Montserrat", sans-serif;
   margin-top: 20px;
 }
-
 
 .card-cadastrar {
   display: flex;

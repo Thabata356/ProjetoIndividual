@@ -76,7 +76,7 @@ body {
 
 .banner {
   background-color: #f5f3ef;
-  padding: 6rem 2rem;
+  padding: 96px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,7 +159,7 @@ body {
   background: none;
   border: none;
   color: #003366;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -167,7 +167,7 @@ body {
   padding: 0;
   font-family: "Montserrat", sans-serif;
   text-decoration: none;
-  margin-top: 1rem;
+  margin-top: 16px;
 }
 
 .btn-texto:hover {
@@ -326,16 +326,16 @@ body {
 
 h3 {
   display: flex;
-  margin-left: 1.6rem;
-  font-size: 1.2rem;
+  margin-left: 25.6px;
+  font-size: 19.2px;
   color: #003366;
 }
 
 .experiencia-quadrados p {
-  font-size: 0.9rem;
+  font-size: 14.4px;
   width: 80%;
   margin-top: 0;
-  margin-left: 1.6rem;
+  margin-left: 25.6px;
   text-align: justify;
 }
 
@@ -479,16 +479,16 @@ h3 {
 .campo span {
   color: #003366;
   font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 0.3125rem;
+  font-size: 16px;
+  margin-bottom: 5px;
 }
 
 .campo input {
   width: 100%;
   border: none;
-  border-bottom: 0.125rem solid #9b9b9b;
-  padding: 0.5rem 0;
-  font-size: 1rem;
+  border-bottom: 2px solid #9b9b9b;
+  padding: 8px 0;
+  font-size: 16px;
   margin-bottom: 15px;
   background-color: #f5f3ef;
   border-bottom-color: #003366;
